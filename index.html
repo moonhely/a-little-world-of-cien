@@ -175,6 +175,146 @@
       *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; }
     }
   </style>
+  
+/* =================================
+   CIEN'S NOSTALGIC COUNTRYSIDE THEME
+================================= */
+
+body {
+  background: #f5f4e9;
+  color: #39483b;
+  background-image:
+    radial-gradient(#a8c69f22 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.topbar {
+  background: rgba(247, 240, 223, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #dce4d2;
+}
+
+.brand {
+  color: #49634d;
+  letter-spacing: 1px;
+}
+
+nav a {
+  color: #657b62;
+}
+
+nav a:hover {
+  color: #9a82b9;
+}
+
+/* Dreamy countryside homepage */
+.hero {
+  background: linear-gradient(
+    180deg,
+    #c9e0ec 0%,
+    #dce9e9 45%,
+    #e7edcf 100%
+  );
+  overflow: hidden;
+  position: relative;
+}
+
+/* Soft sunlight */
+.sun {
+  background: #fff0b9;
+  box-shadow: 0 0 55px #fff0b977;
+}
+
+/* Rolling green hills */
+.hill {
+  background: #a8c69f;
+}
+
+.hill.back {
+  background: #c1d2a8;
+}
+
+/* Clouds */
+.cloud {
+  opacity: 0.85;
+  filter: blur(0.3px);
+}
+
+/* Flying birds */
+.bird {
+  color: #657b62;
+  animation: birdFloat 5s ease-in-out infinite;
+}
+
+@keyframes birdFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+/* Scrapbook paper cards */
+.paper-card {
+  background: #fffdf5;
+  border: 1px solid #e7e1d1;
+  box-shadow: 0 10px 30px #53664a18;
+  border-radius: 22px;
+}
+
+/* Polaroid photographs */
+.polaroid {
+  background: #fffdf8;
+  box-shadow: 0 10px 25px #39483b20;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-5px);
+}
+
+/* Section backgrounds */
+.section {
+  background: transparent;
+}
+
+.section-heading {
+  color: #49634d;
+}
+
+/* Soft lavender accents */
+a:hover {
+  color: #a18abb;
+}
+
+/* Gentle appearance for small cards */
+.paper-card,
+.polaroid {
+  transition: box-shadow 0.3s ease,
+              transform 0.3s ease;
+}
+
+.paper-card:hover {
+  box-shadow: 0 14px 35px #53664a25;
+}
+
+/* Mobile-friendly spacing */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 500px;
+  }
+
+  .paper-card {
+    border-radius: 18px;
+  }
+
+  .polaroid {
+    max-width: 100%;
+  }
+}
+
 </head>
 <body>
   <header class="topbar">
