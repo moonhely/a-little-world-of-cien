@@ -342,7 +342,89 @@ a:hover {
     white-space: nowrap;
   }
 }
+/* K-POP SCRAPBOOK SECTION */
+.kpop-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
 
+.kpop-group-card {
+  background: #fffdf7;
+  border: 1px solid #e4e8d9;
+  border-radius: 18px;
+  padding: 20px 12px;
+  text-align: center;
+  box-shadow: 0 7px 18px #53664a12;
+  transition: .2s;
+}
+
+.kpop-group-card:nth-child(even) {
+  background: #f0eaf4;
+}
+
+.kpop-group-card:hover {
+  transform: translateY(-4px) rotate(-1deg);
+}
+
+.kpop-group-card strong {
+  display: block;
+  color: var(--deep-green);
+  font: 1.15rem Georgia, serif;
+}
+
+.kpop-group-card small {
+  display: block;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.bias-collection {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.bias-card {
+  background: #fffdf7;
+  border: 1px solid #e8e1d4;
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 7px 18px #53664a12;
+}
+
+.bias-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #dce8d5, #eee7f4);
+  border: 1px dashed #a8b9a1;
+  border-radius: 12px;
+  color: #718071;
+  font-size: .85rem;
+  margin-bottom: 10px;
+}
+
+.bias-card strong {
+  display: block;
+  color: var(--deep-green);
+}
+
+.bias-card small {
+  color: var(--muted);
+}
+
+@media (max-width: 850px) {
+  .kpop-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bias-collection {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
   </style>
 </head>
 <body>
@@ -405,23 +487,66 @@ a:hover {
     </section>
 
     <section class="section" id="kpop">
-      <div class="section-heading"><div class="eyebrow">my playlists have a bias list</div><h2>My K-pop world</h2><p>A little corner for the groups, music, performances, and people I cheer for.</p></div>
-      <div class="kpop-grid">
-        <div class="group-slot"><span class="slot-icon">🎧</span><strong>Group name</strong><small>Add group photo and details</small></div>
-        <div class="group-slot"><span class="slot-icon">🎤</span><strong>Group name</strong><small>Add group photo and details</small></div>
-        <div class="group-slot"><span class="slot-icon">💿</span><strong>Group name</strong><small>Add group photo and details</small></div>
-        <div class="group-slot"><span class="slot-icon">⭐</span><strong>Group name</strong><small>Add group photo and details</small></div>
-        <div class="group-slot"><span class="slot-icon">🎀</span><strong>Group name</strong><small>Add group photo and details</small></div>
-        <div class="group-slot"><span class="slot-icon">🌷</span><strong>More soon...</strong><small>There's always room for more music</small></div>
-      </div>
-      <h3 class="serif" style="font-size:1.7rem;color:var(--deep-green);margin:35px 0 12px;">And my biases ♡</h3>
-      <div class="bias-grid">
-        <div class="bias-slot"><div class="avatar">♡</div><strong>Bias name</strong><br><small>Group name</small></div>
-        <div class="bias-slot"><div class="avatar">♡</div><strong>Bias name</strong><br><small>Group name</small></div>
-        <div class="bias-slot"><div class="avatar">♡</div><strong>Bias name</strong><br><small>Group name</small></div>
-        <div class="bias-slot"><div class="avatar">♡</div><strong>Bias name</strong><br><small>Group name</small></div>
-      </div>
-    </section>
+    <section class="section" id="kpop">
+  <div class="section-heading">
+    <div class="eyebrow">a little place for my favorite artists</div>
+    <h2>My K-pop world</h2>
+    <p>The groups whose music and performances have become part of my little world.</p>
+  </div>
+
+  <h3 class="serif" style="font-size:1.7rem;color:var(--deep-green);margin-bottom:18px;">
+    My favorite groups ♡
+  </h3>
+
+  <div class="kpop-groups">
+    <div class="kpop-group-card"><strong>NEXZ</strong><small>NEX2Y</small></div>
+    <div class="kpop-group-card"><strong>P1Harmony</strong><small>P1ECE</small></div>
+    <div class="kpop-group-card"><strong>SEVENTEEN</strong><small>CARAT</small></div>
+    <div class="kpop-group-card"><strong>BOYNEXTDOOR</strong><small>ONEDOOR</small></div>
+    <div class="kpop-group-card"><strong>ENHYPEN</strong><small>ENGENE</small></div>
+    <div class="kpop-group-card"><strong>ATEEZ</strong><small>ATINY</small></div>
+    <div class="kpop-group-card"><strong>TXT</strong><small>MOA</small></div>
+    <div class="kpop-group-card"><strong>BTS</strong><small>ARMY</small></div>
+    <div class="kpop-group-card"><strong>Stray Kids</strong><small>STAY</small></div>
+    <div class="kpop-group-card"><strong>TWS</strong><small>SAI</small></div>
+    <div class="kpop-group-card"><strong>ZEROBASEONE</strong><small>ZEROSE</small></div>
+    <div class="kpop-group-card"><strong>RIIZE</strong><small>BRIIZE</small></div>
+    <div class="kpop-group-card"><strong>&TEAM</strong><small>LUNÉ</small></div>
+    <div class="kpop-group-card"><strong>CORTIS</strong><small>COER</small></div>
+    <div class="kpop-group-card"><strong>LNGSHOT</strong><small>SHOTIE</small></div>
+    <div class="kpop-group-card"><strong>ALPHA DRIVE ONE</strong><small>ALLYZ</small></div>
+    <div class="kpop-group-card"><strong>AMPERS&ONE</strong><small>Andear</small></div>
+  </div>
+
+  <div class="divider-flower" style="margin:45px 0 25px;">✿ ✿ ✿</div>
+
+  <div class="section-heading">
+    <div class="eyebrow">people who caught my attention</div>
+    <h2>My Bias Collection</h2>
+    <p>A little collection of my favorite members.</p>
+  </div>
+
+  <div class="bias-collection">
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Tomiyasu Yu</strong><small>NEXZ</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Hwang Intak</strong><small>P1Harmony</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Yoon Jeonghan</strong><small>SEVENTEEN</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Kim Woonak</strong><small>BOYNEXTDOOR</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Sim Jaeyun</strong><small>ENHYPEN</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Jeong Yunho</strong><small>ATEEZ</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Choi Soobin</strong><small>TXT</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Jeon Jungkook</strong><small>BTS</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Kim Seungmin</strong><small>Stray Kids</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Shin Junghwan</strong><small>TWS</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Sung Hanbin</strong><small>ZEROBASEONE</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Park Wonbin</strong><small>RIIZE</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Euijoo</strong><small>&TEAM</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Nicholas</strong><small>&TEAM</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>An Keonho</strong><small>CORTIS</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Kwon Ohyul</strong><small>LNGSHOT</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Lee Leo</strong><small>ALPHA DRIVE ONE</small></div>
+    <div class="bias-card"><div class="bias-photo">Add photo</div><strong>Mackiah Mercer</strong><small>AMPERS&ONE</small></div>
+  </div>
+</section>
 
     <section class="section" id="hobbies">
       <div class="section-heading"><div class="eyebrow">little things that make me, me</div><h2>My little hobbies</h2><p>Different interests, different moods, all pieces of the same person.</p></div>
