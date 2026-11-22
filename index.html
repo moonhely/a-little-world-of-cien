@@ -314,6 +314,35 @@ a:hover {
   }
 }
     
+/* MOBILE NAVIGATION FIX */
+@media (max-width: 600px) {
+  .topbar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .topbar .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 8px;
+  }
+
+  .topbar .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .topbar .nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
   </style>
 </head>
 <body>
