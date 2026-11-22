@@ -1,407 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f3ecdf">
-  <title>A Little World of Cien</title>
-  <style>
-    :root {
-      --paper: #f3ecdf;
-      --paper-deep: #e9decc;
-      --ink: #39352f;
-      --brown: #806b55;
-      --sage: #87917a;
-      --rose: #c49a91;
-      --line: #cdbfae;
-      --white: #fbf8f1;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(ellipse at 15% 10%, rgba(196,154,145,.12), transparent 30%),
-        radial-gradient(ellipse at 85% 35%, rgba(135,145,122,.12), transparent 28%),
-        var(--paper);
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.6;
-    }
-    button, input, textarea { font: inherit; }
-    a { color: inherit; }
-    .site-shell { width: min(1050px, 92%); margin: 0 auto; }
-    .topline {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 12px; padding: 20px 0 12px; color: var(--brown);
-      font: 11px/1.4 Arial, sans-serif; letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-    .topline span:last-child { letter-spacing: .08em; }
-    .nav {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-      padding: 12px 0 18px; border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav button {
-      border: 1px solid transparent; background: transparent; color: var(--brown);
-      padding: 7px 13px; border-radius: 999px; cursor: pointer;
-      font: 12px Arial, sans-serif; letter-spacing: .04em;
-      transition: .2s ease;
-    }
-    .nav button:hover, .nav button.active {
-      background: var(--white); border-color: var(--line); color: var(--ink);
-    }
-    main { padding: 26px 0 55px; }
-    .page { display: none; animation: appear .35s ease; }
-    .page.active { display: block; }
-    @keyframes appear { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-    .hero {
-      display: grid; grid-template-columns: 1.05fr .95fr; gap: 28px;
-      align-items: center; padding: 20px 0 34px;
-    }
-    .eyebrow {
-      color: var(--sage); font: 11px Arial, sans-serif;
-      letter-spacing: .2em; text-transform: uppercase;
-    }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 {
-      color: #514538; font-size: clamp(42px, 7vw, 76px);
-      line-height: .98; font-weight: normal; font-style: italic;
-      margin: 14px 0 18px;
-    }
-    h2 {
-      color: #514538; font-size: clamp(30px, 5vw, 43px);
-      line-height: 1.1; font-weight: normal; font-style: italic;
-      margin: 8px 0 14px;
-    }
-    h3 { color: #514538; font-size: 21px; font-weight: normal; }
-    .intro { max-width: 470px; color: #6c5b49; font-size: 17px; }
-    .tiny-note { color: var(--brown); font-size: 13px; font-style: italic; }
-    .hero-photo {
-      min-height: 340px; position: relative; overflow: hidden;
-      border: 10px solid var(--white); outline: 1px solid var(--line);
-      box-shadow: 0 12px 28px rgba(65,50,35,.12);
-      transform: rotate(1.5deg);
-      background:
-        linear-gradient(0deg, rgba(50,43,34,.12), rgba(50,43,34,.02)),
-        url("https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1000&q=85") center/cover;
-    }
-    .photo-caption {
-      position: absolute; right: 12px; bottom: 10px;
-      color: white; text-shadow: 0 1px 5px #333; font-size: 13px; font-style: italic;
-    }
-    .welcome-strip {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-      margin: 10px 0 28px;
-    }
-    .paper-card {
-      background: rgba(251,248,241,.78); border: 1px solid var(--line);
-      padding: 22px; box-shadow: 0 5px 15px rgba(65,50,35,.05);
-    }
-    .paper-card.sage { background: #e3e6da; }
-    .paper-card.rose { background: #eddfd9; }
-    .paper-card h3 { margin-bottom: 7px; }
-    .paper-card p { margin-bottom: 0; color: #6c5b49; font-size: 14px; }
-    .section-heading { margin-bottom: 22px; }
-    .section-heading p { color: var(--brown); max-width: 620px; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .fact-list { list-style: none; margin: 0; padding: 0; }
-    .fact-list li { padding: 9px 0; border-bottom: 1px dashed var(--line); }
-    .fact-list strong { color: var(--brown); font-weight: normal; }
-    .interest-grid, .gallery-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-    }
-    .interest-card {
-      background: var(--white); border: 1px solid var(--line);
-      padding: 18px; min-height: 175px;
-    }
-    .interest-card .symbol { font-size: 25px; }
-    .interest-card p { color: var(--brown); font-size: 14px; margin-bottom: 0; }
-    .gallery-item {
-      border: 7px solid var(--white); outline: 1px solid var(--line);
-      background: var(--paper-deep); min-height: 190px; padding: 0;
-      cursor: pointer; overflow: hidden; position: relative;
-      box-shadow: 0 5px 14px rgba(65,50,35,.08);
-    }
-    .gallery-item img { width: 100%; height: 210px; object-fit: cover; display: block; transition: transform .35s; }
-    .gallery-item:hover img { transform: scale(1.04); }
-    .gallery-item span {
-      display: block; padding: 8px 5px 2px; color: var(--brown);
-      background: var(--white); font-size: 13px; font-style: italic;
-    }
-    .favorites-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .favorite {
-      padding: 14px 16px; background: rgba(251,248,241,.8);
-      border-left: 3px solid var(--sage);
-    }
-    .favorite small { display: block; color: var(--sage); text-transform: uppercase; letter-spacing: .12em; font: 10px Arial, sans-serif; }
-    .favorite strong { color: #514538; font-weight: normal; }
-    .journal-note {
-      background: #eee4d4; border: 1px solid var(--line); padding: 24px;
-      max-width: 700px; transform: rotate(-.3deg);
-    }
-    .guestbook-form { display: grid; gap: 12px; max-width: 600px; }
-    .guestbook-form input, .guestbook-form textarea {
-      width: 100%; border: 1px solid var(--line); background: var(--white);
-      color: var(--ink); padding: 12px 14px; border-radius: 2px;
-    }
-    .guestbook-form textarea { min-height: 110px; resize: vertical; }
-    .action {
-      justify-self: start; background: var(--sage); color: white;
-      border: 0; padding: 10px 18px; cursor: pointer;
-      transition: background .2s;
-    }
-    .action:hover { background: #69745f; }
-    .entry {
-      margin-top: 12px; background: var(--white); border: 1px solid var(--line);
-      padding: 13px 16px; max-width: 600px;
-    }
-    .entry strong { color: var(--brown); font-weight: normal; }
-    .privacy { color: var(--brown); font-size: 12px; font-style: italic; }
-    footer {
-      border-top: 1px solid var(--line); padding: 20px 0 28px;
-      text-align: center; color: var(--brown); font-size: 12px; font-style: italic;
-    }
-    .modal {
-      display: none; position: fixed; inset: 0; z-index: 5;
-      background: rgba(35,30,25,.82); align-items: center; justify-content: center;
-      padding: 20px;
-    }
-    .modal.open { display: flex; }
-    .modal img { max-width: min(900px, 95vw); max-height: 80vh; border: 9px solid var(--white); }
-    .modal button {
-      position: absolute; top: 18px; right: 22px; background: var(--white);
-      border: 0; padding: 8px 12px; cursor: pointer;
-    }
-    @media (max-width: 700px) {
-      .hero, .welcome-strip, .two-col { grid-template-columns: 1fr; }
-      .hero { gap: 20px; }
-      .hero-photo { min-height: 250px; }
-      .interest-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .topline { font-size: 9px; }
-    }
-    @media (max-width: 430px) {
-      .interest-grid, .gallery-grid, .favorites-list { grid-template-columns: 1fr; }
-      .nav { gap: 3px; }
-      .nav button { padding: 7px 9px; font-size: 11px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="site-shell">
-    <header>
-      <div class="topline">
-        <span>✿ Cien's personal corner</span>
-        <span>A tiny archive of me · Est. 2026</span>
-      </div>
-      <nav class="nav" aria-label="Main navigation">
-        <button class="active" data-page="home">Home</button>
-        <button data-page="about">About me</button>
-        <button data-page="interests">Interests</button>
-        <button data-page="favorites">Favorites</button>
-        <button data-page="gallery">Gallery</button>
-        <button data-page="journal">Journal</button>
-        <button data-page="guestbook">Guestbook</button>
-      </nav>
-    </header>
-
-    <main>
-      <section class="page active" id="home">
-        <div class="hero">
-          <div>
-            <div class="eyebrow">A little place on the internet</div>
-            <h1>A little<br>world of Cien</h1>
-            <p class="intro">Little things, lovely memories, and everything that makes me, me.</p>
-            <p class="tiny-note">“Collecting moments, keeping memories, and enjoying the little things.”</p>
-          </div>
-          <div class="hero-photo" role="img" aria-label="A warm, nostalgic landscape photograph">
-            <span class="photo-caption">somewhere in my daydreams ♡</span>
-          </div>
-        </div>
-        <div class="welcome-strip">
-          <article class="paper-card">
-            <h3>Dear visitor,</h3>
-            <p>Hi, I'm Cien! Welcome to my little corner of the internet. This is where I keep the things I love, the memories I make, and small pieces of my everyday life. Take your time and have a look around.</p>
-          </article>
-          <article class="paper-card sage">
-            <h3>A note before you wander</h3>
-            <p>Think of this website as an open scrapbook: a little imperfect, a little nostalgic, and always growing. Thank you for stopping by!</p>
-          </article>
-        </div>
-        <p class="tiny-note" style="text-align:center">✧ turn the pages and get to know me ✧</p>
-      </section>
-
-      <section class="page" id="about">
-        <div class="section-heading">
-          <div class="eyebrow">The person behind the pages</div>
-          <h2>A little about me</h2>
-          <p>Some small details about the person who made this tiny corner.</p>
-        </div>
-        <div class="two-col">
-          <article class="paper-card">
-            <h3>Hello, I'm Cien!</h3>
-            <p>I'm someone who enjoys quiet moments, creative things, music, and collecting little memories. I can be quiet around new people, but much more talkative with the people I'm comfortable with.</p>
-            <p class="tiny-note">Still learning, growing, and figuring things out — one day at a time.</p>
-          </article>
-          <article class="paper-card rose">
-            <h3>Little facts</h3>
-            <ul class="fact-list">
-              <li><strong>Name:</strong> Cien</li>
-              <li><strong>Personality:</strong> INTP (my own little puzzle)</li>
-              <li><strong>Favorite vibe:</strong> Calm, vintage, and cozy</li>
-              <li><strong>Creative side:</strong> Photography and art</li>
-              <li><strong>Current chapter:</strong> Making memories</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="page" id="interests">
-        <div class="section-heading">
-          <div class="eyebrow">Things that make my days brighter</div>
-          <h2>My interests</h2>
-          <p>A collection of things I enjoy and always find myself coming back to.</p>
-        </div>
-        <div class="interest-grid">
-          <article class="interest-card"><div class="symbol">♫</div><h3>K-pop & music</h3><p>Boy groups, favorite performances, playlists, and songs on repeat.</p></article>
-          <article class="interest-card"><div class="symbol">📷</div><h3>Photography</h3><p>Little details, nostalgic places, nature, and everyday moments.</p></article>
-          <article class="interest-card"><div class="symbol">✎</div><h3>Art & creativity</h3><p>Painting, designing, journaling, and trying new creative ideas.</p></article>
-          <article class="interest-card"><div class="symbol">🌿</div><h3>Nature</h3><p>Green spaces, leaves, flowers, and peaceful scenery.</p></article>
-          <article class="interest-card"><div class="symbol">📚</div><h3>Quiet time</h3><p>Reading, daydreaming, and enjoying a slow afternoon.</p></article>
-          <article class="interest-card"><div class="symbol">🎞</div><h3>Memories</h3><p>Scrapbooks, old photos, and keeping meaningful moments.</p></article>
-        </div>
-      </section>
-
-      <section class="page" id="favorites">
-        <div class="section-heading">
-          <div class="eyebrow">A few things I adore</div>
-          <h2>My favorites</h2>
-          <p>A tiny list of current favorites. You can edit these and make them your own.</p>
-        </div>
-        <div class="favorites-list">
-          <div class="favorite"><small>Music</small><strong>K-pop, soft playlists & songs on repeat</strong></div>
-          <div class="favorite"><small>Groups</small><strong>NEXZ, P1Harmony, Stray Kids & more</strong></div>
-          <div class="favorite"><small>Color palette</small><strong>Sage green, warm cream & dusty rose</strong></div>
-          <div class="favorite"><small>Aesthetic</small><strong>Vintage, nostalgic & scrapbook-inspired</strong></div>
-          <div class="favorite"><small>Creative hobby</small><strong>Photography and art</strong></div>
-          <div class="favorite"><small>Little joy</small><strong>Finding beauty in ordinary moments</strong></div>
-        </div>
-      </section>
-
-      <section class="page" id="gallery">
-        <div class="section-heading">
-          <div class="eyebrow">Snapshots & keepsakes</div>
-          <h2>My little gallery</h2>
-          <p>Sample photographs for now. Later, replace them with your own pictures. Tap a photo to see it larger.</p>
-        </div>
-        <div class="gallery-grid">
-          <button class="gallery-item" data-full="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1400&q=90"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=600&q=80" alt="Sunlight over a peaceful landscape"><span>a quiet morning</span></button>
-          <button class="gallery-item" data-full="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=90"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=600&q=80" alt="Soft flowers in bloom"><span>little flowers</span></button>
-          <button class="gallery-item" data-full="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=90"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80" alt="Sunlight through a green forest"><span>somewhere green</span></button>
-          <button class="gallery-item" data-full="https://images.unsplash.com/photo-1455390582262-044c089a8f8d?auto=format&fit=crop&w=1400&q=90"><img src="https://images.unsplash.com/photo-1455390582262-044c089a8f8d?auto=format&fit=crop&w=600&q=80" alt="A notebook and writing desk"><span>pages in progress</span></button>
-          <button class="gallery-item" data-full="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1400&q=90"><img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=600&q=80" alt="Books and a cozy reading scene"><span>slow afternoons</span></button>
-          <button class="gallery-item" data-full="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=90"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=600&q=80" alt="A mountain lake landscape"><span>somewhere to wander</span></button>
-        </div>
-      </section>
-
-      <section class="page" id="journal">
-        <div class="section-heading">
-          <div class="eyebrow">Notes to self</div>
-          <h2>My journal</h2>
-          <p>A small space for thoughts, reminders, and things worth remembering.</p>
-        </div>
-        <article class="journal-note">
-          <div class="eyebrow">A little reminder</div>
-          <h3>Dear me,</h3>
-          <p>You don't have to have everything figured out. Keep being curious, keep creating, and remember to notice the little things along the way.</p>
-          <p class="tiny-note">— a note for another day ♡</p>
-        </article>
-      </section>
-
-      <section class="page" id="guestbook">
-        <div class="section-heading">
-          <div class="eyebrow">Leave a little hello</div>
-          <h2>Guestbook</h2>
-          <p>Thanks for visiting! Leave a small note in this demo guestbook.</p>
-        </div>
-        <form class="guestbook-form" id="guestbookForm">
-          <label for="visitorName">Your name or nickname</label>
-          <input id="visitorName" maxlength="30" placeholder="What should I call you?" required>
-          <label for="visitorMessage">Your message</label>
-          <textarea id="visitorMessage" maxlength="240" placeholder="Write a little hello..." required></textarea>
-          <button class="action" type="submit">Leave a note ♡</button>
-        </form>
-        <p class="privacy">Demo only: messages appear on this page during this visit. They are not published or sent to anyone.</p>
-        <div id="guestbookEntries" aria-live="polite"></div>
-      </section>
-    </main>
-
-    <footer>
-      made with a little nostalgia & lots of love · A Little World of Cien ♡
-    </footer>
-  </div>
-
-  <div class="modal" id="photoModal" role="dialog" aria-modal="true" aria-label="Expanded photograph">
-    <button id="closeModal" aria-label="Close photograph">Close ✕</button>
-    <img id="modalImage" src="" alt="Expanded gallery photograph">
-  </div>
-
-  <script>
-    // Simple page navigation
-    const navButtons = document.querySelectorAll(".nav button");
-    const pages = document.querySelectorAll(".page");
-
-    navButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const pageName = button.dataset.page;
-        pages.forEach(page => page.classList.toggle("active", page.id === pageName));
-        navButtons.forEach(item => item.classList.toggle("active", item === button));
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
-
-    // Gallery lightbox
-    const modal = document.getElementById("photoModal");
-    const modalImage = document.getElementById("modalImage");
-    document.querySelectorAll(".gallery-item").forEach(item => {
-      item.addEventListener("click", () => {
-        modalImage.src = item.dataset.full;
-        modalImage.alt = item.querySelector("img").alt;
-        modal.classList.add("open");
-      });
-    });
-    function closeModal() {
-      modal.classList.remove("open");
-      modalImage.src = "";
-    }
-    document.getElementById("closeModal").addEventListener("click", closeModal);
-    modal.addEventListener("click", event => {
-      if (event.target === modal) closeModal();
-    });
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closeModal();
-    });
-
-    // Guestbook demo: entries exist only until the page is refreshed.
-    document.getElementById("guestbookForm").addEventListener("submit", event => {
-      event.preventDefault();
-      const name = document.getElementById("visitorName").value.trim();
-      const message = document.getElementById("visitorMessage").value.trim();
-      if (!name || !message) return;
-
-      const entry = document.createElement("article");
-      entry.className = "entry";
-      const author = document.createElement("strong");
-      author.textContent = name + " wrote:";
-      const note = document.createElement("p");
-      note.textContent = message;
-      note.style.margin = "6px 0 0";
-      entry.append(author, note);
-      document.getElementById("guestbookEntries").prepend(entry);
-      event.target.reset();
-    });
-  </script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4eee3"><title>A Little World of Cien</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="wrap header"><a class="brand" href="#" data-go="home">✿ a little world of cien</a><span>PERSONAL ARCHIVE · 2026</span></header>
+<nav class="wrap nav">
+<button class="active" data-page="home">home</button><button data-page="about">about me</button><button data-page="interests">interests</button><button data-page="kpop">k-pop corner</button><button data-page="creative">through my lens</button><button data-page="favorites">favorites</button><button data-page="social">find me online</button><button data-page="writing">my writing</button><button data-page="gaming">gaming corner</button><button data-page="guestbook">guestbook</button>
+</nav>
+<main class="wrap">
+<section id="home" class="page active">
+<div class="hero"><div><p class="eyebrow">✧ a little place to call my own ✧</p><h1>A little<br><em>world of Cien.</em></h1><p class="lede">A collection of things I love, moments I want to keep, and dreams I'm still chasing.</p><button class="primary" data-go="about">come on in ↗</button><p class="hand">stay a little while ♡</p></div>
+<div class="polaroid"><div class="tape"></div><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1000&q=85" alt="Golden sunlight over a peaceful landscape"><span>somewhere in my daydreams</span></div></div>
+<article class="letter"><strong>dear visitor,</strong><p>Hi, I'm Cien! Welcome to my little corner of the internet. This is where I keep the things that make me happy: music, stories, creativity, little discoveries, and memories from everyday life. I'm glad you're here.</p><i>— Cien ♡</i></article>
+<div class="tiles"><button data-go="interests" class="tile sage"><small>01 / EXPLORE</small><b>Things I enjoy</b><span>hobbies & interests ↗</span></button><button data-go="kpop" class="tile lilac"><small>02 / PLAY</small><b>My K-pop corner</b><span>groups & music ↗</span></button><button data-go="creative" class="tile rose"><small>03 / CREATE</small><b>Through my lens</b><span>photos & big dreams ↗</span></button></div>
+<p class="center hand">collecting little moments, one page at a time ✧</p>
+</section>
+<section id="about" class="page"><p class="eyebrow">the person behind the pages</p><h2>A little about me</h2><div class="two"><div class="polaroid"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=85" alt="Flowers in soft light"><span>a little softness in everyday things</span></div><article class="letter lined"><p class="eyebrow">hello, i'm</p><h3>Cienhel A. Biñas</h3><p>You can call me <b>Cien</b>. I'm a creative, curious, and introspective person with many interests and always something new I'd like to explore.</p><p>I enjoy finding happiness in the things I love, whether that's watching a series, listening to music, dancing, collecting cute things, or capturing a moment through a camera.</p><i>still growing, still dreaming, still discovering.</i></article></div><div class="traits"><span>creative</span><span>curious</span><span>introspective</span><span>ambitious</span></div></section>
+<section id="interests" class="page"><p class="eyebrow">little things that make me happy</p><h2>My interests</h2><p class="sub">Different interests, different worlds, all little pieces of me.</p><div class="cards">
+<article><b>♫</b><h3>Music</h3><p>R&B, romantic songs, danceable tracks, and lots of K-pop.</p></article>
+<article><b>♡</b><h3>K-dramas & stories</h3><p>Getting attached to characters, films, and series that stay on my mind.</p></article>
+<article><b>✧</b><h3>Dancing</h3><p>Enjoying music with movement and learning dances I like.</p></article>
+<article><b>📷</b><h3>Photography</h3><p>Noticing little details and keeping moments through photographs.</p></article>
+<article><b>🎀</b><h3>Cute collections</h3><p>Finding and collecting little things that bring me joy.</p></article>
+<article><b>✎</b><h3>Creative things</h3><p>Exploring art, ideas, visuals, and ways to express myself.</p></article></div></section>
+<section id="kpop" class="page"><p class="eyebrow">music on repeat</p><h2>My K-pop corner</h2><p class="sub">Mostly boy groups, always good music.</p><div class="cards two-cards">
+<article><small>01</small><h3>NEXZ</h3><p>One of my favorite groups.</p><b class="soft">Bias: Tomiyasu Yuu</b></article>
+<article><small>02</small><h3>P1Harmony</h3><p>Music, performances, and content.</p><b class="soft">Biases: Jiung & Intak</b></article>
+<article><small>03</small><h3>Stray Kids</h3><p>Another group in my K-pop world.</p></article>
+<article><small>04</small><h3>ENHYPEN & more</h3><p>Always discovering more artists.</p></article></div><p class="hand">currently adding more songs to the playlist...</p></section>
+<section id="creative" class="page"><p class="eyebrow">little moments through my lens</p><h2>Through my lens</h2><div class="two"><div class="polaroid"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=85" alt="Sunlight in a green forest"><span>noticing the little things</span></div><article class="letter"><p class="eyebrow">a dream for someday</p><h3>To see the world, camera in hand.</h3><p>I want to travel around the world, experience different places, and capture the stories I find along the way. My dream is to become a filmmaker — to tell stories through moving images.</p><i>one day, somewhere ♡</i></article></div><p class="sub">This gallery is ready for your own photographs. We can add your pictures whenever you're ready.</p></section>
+<section id="favorites" class="page"><p class="eyebrow">a few current favorites</p><h2>Things I love</h2><div class="cards two-cards">
+<article class="lilac"><small>COLORS</small><h3>Green & purple</h3><div class="swatches"><i></i><i></i></div></article>
+<article><small>MUSIC</small><h3>R&B, romantic songs, danceable music & K-pop</h3></article>
+<article><small>SHOWS & FILMS</small><h3>Stranger Things, Marvel, Disney & cartoons</h3></article>
+<article><small>BOOKS</small><h3>Novels by Ann Liang</h3></article>
+<article><small>ARTISTS</small><h3>NEXZ, P1Harmony, Stray Kids, ENHYPEN & more</h3></article>
+<article><small>LITTLE JOYS</small><h3>Cute finds, photographs, dancing & daydreams</h3></article></div></section>
+<section id="social" class="page"><p class="eyebrow">little places around the internet</p><h2>Find me online</h2><p class="sub">A few places where you can find me, follow along, or listen to what I'm playing.</p><div class="cards two-cards social-cards">
+<article><small>INSTAGRAM · MAIN</small><h3>@moonhely</h3><a href="https://www.instagram.com/moonhely/" target="_blank" rel="noopener noreferrer">visit my profile ↗</a></article>
+<article><small>INSTAGRAM · DUMP</small><h3>@softbycien_</h3><a href="https://www.instagram.com/softbycien._/" target="_blank" rel="noopener noreferrer">visit my profile ↗</a></article>
+<article><small>TIKTOK · MAIN</small><h3>@moonhely_</h3><a href="https://www.tiktok.com/@moonhely_" target="_blank" rel="noopener noreferrer">visit my profile ↗</a></article>
+<article><small>TIKTOK · AUTHOR / AU STORIES</small><h3>@cyn_wi</h3><a href="https://www.tiktok.com/@cyn_wi" target="_blank" rel="noopener noreferrer">read my story updates ↗</a></article>
+<article><small>X / TWITTER</small><h3>@cyn_wiii</h3><a href="https://x.com/cyn_wiii" target="_blank" rel="noopener noreferrer">find me on X ↗</a></article>
+<article><small>THREADS</small><h3>@moonhely</h3><a href="https://www.threads.net/@moonhely" target="_blank" rel="noopener noreferrer">visit my profile ↗</a></article>
+<article><small>TUMBLR</small><h3>@moonhely</h3><a href="https://www.tumblr.com/moonhely" target="_blank" rel="noopener noreferrer">visit my blog ↗</a></article>
+<article><small>SPOTIFY</small><h3>@Moonhely</h3><a href="https://open.spotify.com/user/31kaks2bbufmtaxgoym3qved4wnq" target="_blank" rel="noopener noreferrer">listen with me ↗</a></article>
+</div><p class="hand">see you around the internet ♡</p></section>
+<section id="writing" class="page"><p class="eyebrow">stories, ideas & alternate universes</p><h2>My writing corner</h2><p class="sub">A little space for my stories and the worlds I imagine.</p><div class="cards two-cards">
+<article class="lilac"><small>WATTPAD</small><h3>@Moonhely_</h3><p>Find my written stories and works here.</p><a href="https://www.wattpad.com/user/Moonhely_" target="_blank" rel="noopener noreferrer">visit my Wattpad ↗</a></article>
+<article class="rose"><small>AUTHOR TIKTOK · AU STORIES</small><h3>@cyn_wi</h3><p>Story updates and alternative-universe ideas.</p><a href="https://www.tiktok.com/@cyn_wi" target="_blank" rel="noopener noreferrer">visit my author account ↗</a></article>
+</div><p class="privacy">More story links can be added whenever you want to share them.</p></section>
+<section id="gaming" class="page"><p class="eyebrow">a different kind of little world</p><h2>My gaming corner</h2><p class="sub">Online games, exploring, building, and having fun.</p><div class="cards two-cards">
+<article class="sage"><small>MINECRAFT</small><h3>@Moonhely</h3><p>My Minecraft profile.</p><a href="https://launch.minecraft.net/profile/Moonhely" target="_blank" rel="noopener noreferrer">view profile ↗</a></article>
+<article class="lilac"><small>MOBILE LEGENDS</small><h3>@moonhely</h3><p>Player ID: <b>1488298119</b><br>Server: <b>(14324)</b></p></article>
+<article class="rose"><small>ROBLOX</small><h3>@arnomnomi</h3><p>Find my Roblox profile.</p><a href="https://www.roblox.com/share?code=3363e3b9f6f80d4da173ae3cc5ac05d8&amp;type=Profile&amp;source=ProfileShare&amp;stamp=1795338947604" target="_blank" rel="noopener noreferrer">visit my profile ↗</a></article>
+</div><p class="hand">let's play, explore, and create ✧</p></section>
+<section id="guestbook" class="page"><p class="eyebrow">you made it to the last page</p><h2>Leave a little hello</h2><p class="sub">Thank you for visiting my little world.</p><form id="guest-form"><label for="guest-name">Your name or nickname</label><input id="guest-name" maxlength="35" required placeholder="What should I call you?"><label for="guest-message">A little message</label><textarea id="guest-message" maxlength="240" required placeholder="Write a little hello..."></textarea><button class="primary">leave a note ♡</button></form><p class="privacy">Demo only: notes appear during this visit and are not saved to a public database.</p><div id="entries"></div></section>
+</main><footer class="wrap">made with curiosity & a little nostalgia · © 2026 · a little world of cien ♡</footer>
+<script src="script.js"></script></body></html>
