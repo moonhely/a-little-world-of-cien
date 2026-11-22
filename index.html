@@ -623,6 +623,106 @@ footer {
     transition:none!important;
   }
 }
+  
+/* DREAMY COUNTRYSIDE BACKGROUND UPDATE */
+
+/* Soft layered background */
+body {
+  background-color: #f5f3e9;
+  background-image:
+    radial-gradient(circle at 10% 15%, #d9cce8 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 30%, #c7d8bd 0 2px, transparent 3px),
+    radial-gradient(circle at 35% 75%, #e8d9c9 0 2px, transparent 3px),
+    linear-gradient(135deg, #f8f5ed, #edf1e6 50%, #f1eaf3);
+  background-size: 45px 45px, 55px 55px, 65px 65px, 100% 100%;
+  background-attachment: fixed;
+}
+
+/* Gentle countryside atmosphere on every page */
+.page {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 5% 15%, #e8e0ef88, transparent 35%),
+    radial-gradient(ellipse at 95% 55%, #dce9d588, transparent 38%),
+    linear-gradient(180deg, #f8f6edaa, #eaf0e588);
+}
+
+/* Tiny scrapbook decorations */
+.section {
+  position: relative;
+}
+
+.section::before {
+  content: "✿";
+  position: absolute;
+  top: 35px;
+  right: 5%;
+  color: #a99abe;
+  font-size: 30px;
+  opacity: .35;
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+.section::after {
+  content: "✧";
+  position: absolute;
+  bottom: 25px;
+  left: 5%;
+  color: #9bb394;
+  font-size: 27px;
+  opacity: .4;
+  pointer-events: none;
+}
+
+/* Softer scrapbook cards */
+.paper-card,
+.hobby,
+.social-group,
+.book-slot,
+.watch-panel {
+  box-shadow: 0 10px 25px rgba(75, 91, 67, .09);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.hobby:hover,
+.social-group:hover,
+.book-slot:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(75, 91, 67, .13);
+}
+
+/* Delicate heading details */
+.section-heading h2 {
+  text-shadow: 1px 2px 0 #ffffff80;
+}
+
+.section-heading .eyebrow {
+  letter-spacing: .2em;
+}
+
+/* A little softness around photos */
+.polaroid,
+.gallery-item {
+  border: 1px solid #eee8d9;
+  box-shadow: 0 12px 28px rgba(65, 85, 64, .14);
+}
+
+/* Keep decorations subtle on smaller screens */
+@media (max-width: 620px) {
+  .section::before {
+    font-size: 23px;
+    top: 20px;
+    right: 4%;
+  }
+
+  .section::after {
+    font-size: 21px;
+    bottom: 15px;
+    left: 4%;
+  }
+}
 </style>
 </head>
 
