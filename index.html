@@ -883,6 +883,242 @@ body {
   margin-top: 8px;
   opacity: 0.75;
 }
+  /* HOBBIES SCRAPBOOK LAYOUT */
+
+.hobby-masonry {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.hobby-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid rgba(120, 135, 105, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 5px 18px rgba(70, 80, 55, 0.07);
+  overflow: hidden;
+}
+
+.hobby-card:nth-child(3n) {
+  transform: translateY(12px);
+}
+
+.hobby-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 7px;
+}
+
+.hobby-title h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.hobby-emoji {
+  font-size: 1.35rem;
+}
+
+.hobby-note,
+.video-caption {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  opacity: 0.75;
+  margin: 0 0 13px;
+}
+
+.hobby-media {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hobby-media img,
+.hobby-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  background: rgba(130, 140, 115, 0.08);
+}
+
+.hobby-media .portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.hobby-media .landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.hobby-media .box-image {
+  aspect-ratio: 1 / 1;
+}
+
+/* Games */
+.games-card {
+  grid-column: span 2;
+}
+
+.games-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.games-media img {
+  aspect-ratio: 3 / 4;
+}
+
+.games-media img:last-child {
+  grid-column: span 2;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+/* Writing */
+.writing-card {
+  grid-column: span 2;
+}
+
+.writing-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.writing-media img,
+.writing-media video {
+  aspect-ratio: 3 / 4;
+}
+
+/* Crocheting */
+.crochet-placeholder {
+  min-height: 145px;
+  border: 1px dashed rgba(120, 135, 105, 0.4);
+  border-radius: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(220, 225, 205, 0.22);
+  text-align: center;
+}
+
+.crochet-placeholder span {
+  font-size: 2rem;
+}
+
+.crochet-placeholder small {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Dancing */
+.dance-card {
+  grid-column: span 2;
+}
+
+.dance-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 13px;
+  background: #222;
+}
+
+.dance-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-caption {
+  margin: 10px 0 0;
+}
+
+/* Painting */
+.painting-card {
+  grid-column: span 2;
+}
+
+.painting-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.painting-media img:first-child {
+  grid-row: span 2;
+  height: 100%;
+  min-height: 220px;
+  aspect-ratio: 3 / 4;
+}
+
+.painting-media img:not(:first-child) {
+  aspect-ratio: 4 / 3;
+}
+
+/* Reading */
+.reading-card {
+  grid-column: span 2;
+}
+
+.reading-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.reading-media .portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.reading-media .box-image {
+  aspect-ratio: 1 / 1;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .hobby-masonry {
+    gap: 12px;
+  }
+
+  .hobby-card {
+    padding: 12px;
+    border-radius: 15px;
+  }
+
+  .hobby-title h3 {
+    font-size: 0.9rem;
+  }
+
+  .hobby-note {
+    font-size: 0.75rem;
+  }
+}
+
+/* Larger screens */
+@media (min-width: 700px) {
+  .hobby-masonry {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .games-card,
+  .writing-card,
+  .dance-card,
+  .painting-card,
+  .reading-card {
+    grid-column: span 2;
+  }
+}
 </style>
 </head>
 
@@ -1083,66 +1319,167 @@ body {
 <!-- HOBBIES PAGE -->
 <div class="page" id="page-hobbies">
   <section class="section">
+
     <div class="section-heading">
       <div class="eyebrow">little things that make me, me</div>
       <h2>My little hobbies</h2>
-      <p>Different interests, different moods, all pieces of the same person.</p>
+      <p>A collection of things I enjoy doing, creating, and discovering.</p>
     </div>
 
-    <div class="hobby-grid">
-      <div class="hobby">
-        <div class="emoji">🎮</div>
-        <h3>Playing games</h3>
+    <div class="hobby-masonry">
+
+      <!-- PLAYING GAMES -->
+      <div class="hobby-card games-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">🎮</span>
+          <h3>Playing Games</h3>
+        </div>
+        <p class="hobby-note">A little gaming whenever I have free time.</p>
+
+        <div class="hobby-media games-media">
+          <img src="craft.jpg" alt="Roblox game">
+          <img src="blox.jpg" alt="Minecraft game">
+          <img src="ml.jpg" alt="Mobile Legends game">
+        </div>
       </div>
 
-      <div class="hobby">
-        <div class="emoji">💿</div>
-        <h3>Collecting K-pop merch</h3>
+      <!-- K-POP MERCH -->
+      <div class="hobby-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">💿</span>
+          <h3>Collecting K-pop Merch</h3>
+        </div>
+        <p class="hobby-note">Little pieces of the groups I love.</p>
+
+        <div class="hobby-media">
+          <img class="portrait" src="kpop.jpg" alt="K-pop merchandise">
+        </div>
       </div>
 
-      <div class="hobby">
-        <div class="emoji">🎀</div>
-        <h3>Cute things & stickers</h3>
+      <!-- STICKERS -->
+      <div class="hobby-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">🎀</span>
+          <h3>Cute Things & Stickers</h3>
+        </div>
+        <p class="hobby-note">A soft spot for cute little things.</p>
+
+        <div class="hobby-media">
+          <img class="portrait" src="stickers.jpg" alt="Stickers and cute things">
+        </div>
       </div>
 
-      <div class="hobby">
-        <div class="emoji">✍️</div>
-        <h3>Writing stories</h3>
+      <!-- WRITING STORIES -->
+      <div class="hobby-card writing-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">✍️</span>
+          <h3>Writing Stories</h3>
+        </div>
+        <p class="hobby-note">Little worlds and stories made from imagination.</p>
+
+        <div class="hobby-media writing-media">
+          <img class="portrait" src="write.jpeg" alt="My writing">
+          <video class="portrait" controls playsinline preload="metadata">
+            <source src="story.mp4" type="video/mp4">
+            Your browser does not support this video.
+          </video>
+        </div>
       </div>
 
-      <div class="hobby">
-        <div class="emoji">🧶</div>
-        <h3>Crocheting</h3>
+      <!-- CROCHETING -->
+      <div class="hobby-card crochet-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">🧶</span>
+          <h3>Crocheting</h3>
+        </div>
+        <p class="hobby-note">A little hobby waiting for its own memories.</p>
+
+        <div class="crochet-placeholder">
+          <span>🧶</span>
+          <small>More little creations coming soon...</small>
+        </div>
       </div>
 
-      <!-- DANCING HOBBY WITH VIDEO -->
-      <div class="hobby">
-        <div class="emoji">💃</div>
-        <h3>Dancing</h3>
+      <!-- DANCING -->
+      <div class="hobby-card dance-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">💃</span>
+          <h3>Dancing</h3>
+        </div>
+        <p class="hobby-note">K-pop Dance Cover | CHOOM – BABYMONSTER</p>
 
-        <div class="hobby-video">
+        <div class="dance-video">
           <iframe
-            src="https://www.youtube-nocookie.com/embed/2x-IddfIJVg"
-            title="CHOOM - BABYMONSTER K-pop Dance Cover by LOONABY"
+            src="https://www.youtube.com/embed/2x-IddfIJVg"
+            title="LOONABY - CHOOM by BABYMONSTER Dance Cover"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
           </iframe>
         </div>
 
-        <p class="hobby-caption">
-          CHOOM – BABYMONSTER
-          <br>K-pop Dance Cover by LOONABY
+        <p class="video-caption">
+          A dance cover of "CHOOM" by BABYMONSTER, performed by LOONABY.
         </p>
       </div>
 
-      <div class="hobby">
-        <div class="emoji">🎧</div>
-        <h3>Listening to music</h3>
+      <!-- LISTENING TO MUSIC -->
+      <div class="hobby-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">🎧</span>
+          <h3>Listening to Music</h3>
+        </div>
+        <p class="hobby-note">There is always a song for every mood.</p>
+
+        <div class="hobby-media">
+          <img class="portrait" src="music.jpg" alt="Listening to music">
+        </div>
       </div>
 
-      <div class="hobby">
-        <div class="emoji">📷</div>
-        <h3>Photography</h3>
+      <!-- PHOTOGRAPHY -->
+      <div class="hobby-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">📷</span>
+          <h3>Photography</h3>
+        </div>
+        <p class="hobby-note">Keeping little moments through pictures.</p>
+
+        <div class="hobby-media">
+          <img class="portrait" src="photo.jpg" alt="My photography">
+        </div>
       </div>
+
+      <!-- PAINTING -->
+      <div class="hobby-card painting-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">🎨</span>
+          <h3>Painting</h3>
+        </div>
+        <p class="hobby-note">Colors, ideas, and things made by hand.</p>
+
+        <div class="hobby-media painting-media">
+          <img class="portrait" src="man.jpg" alt="Painting artwork">
+          <img class="landscape" src="art.jpeg" alt="Painting artwork">
+          <img class="landscape" src="making.jpeg" alt="Painting process">
+          <img class="landscape" src="art2.jpeg" alt="Painting artwork">
+        </div>
+      </div>
+
+      <!-- READING FICTIONAL BOOKS -->
+      <div class="hobby-card reading-card">
+        <div class="hobby-title">
+          <span class="hobby-emoji">📚</span>
+          <h3>Reading Fictional Books</h3>
+        </div>
+        <p class="hobby-note">Getting lost in stories beyond my own.</p>
+
+        <div class="hobby-media reading-media">
+          <img class="portrait" src="book.jpeg" alt="Fictional book">
+          <img class="box-image" src="au.png" alt="A story collection">
+        </div>
+      </div>
+
     </div>
   </section>
 </div>
