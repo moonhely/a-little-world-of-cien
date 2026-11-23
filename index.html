@@ -1213,24 +1213,210 @@ body {
   </section>
 </div>
 
+
 <!-- ABOUT PAGE -->
 <div class="page" id="page-about">
+
+  <style>
+    .cien-scrapbook {
+      color: #596b55;
+    }
+
+    .cien-scrapbook .scrap-heading {
+      text-align: center;
+      margin: 38px 0 22px;
+    }
+
+    .cien-scrapbook .scrap-heading h2 {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      color: #64765f;
+      margin: 8px 0;
+    }
+
+    .cien-scrapbook .scrap-heading p {
+      font-size: 13px;
+      color: #898778;
+    }
+
+    .cien-scrapbook .favorite-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .cien-scrapbook .favorite-card {
+      background: #faf8f0;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 2px 4px 10px rgba(80,75,60,.10);
+      position: relative;
+      transform: rotate(-1deg);
+    }
+
+    .cien-scrapbook .favorite-card:nth-child(even) {
+      transform: rotate(1.5deg);
+      background: #f3eff8;
+    }
+
+    .cien-scrapbook .favorite-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      border-radius: 3px;
+    }
+
+    .cien-scrapbook .favorite-card .scrap-label {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      margin: 10px 2px 3px;
+      color: #64765f;
+    }
+
+    .cien-scrapbook .favorite-card p {
+      font-size: 11px;
+      color: #898778;
+      margin: 0 2px 4px;
+    }
+
+    .cien-scrapbook .scrap-tape {
+      position: absolute;
+      width: 48px;
+      height: 15px;
+      background: rgba(190,181,213,.65);
+      top: -7px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-4deg);
+      z-index: 2;
+    }
+
+    .cien-scrapbook .favorite-card:nth-child(even) .scrap-tape {
+      background: rgba(174,190,157,.7);
+      transform: translateX(-50%) rotate(5deg);
+    }
+
+    .cien-scrapbook .color-dots {
+      display: flex;
+      gap: 7px;
+      margin: 10px 2px 3px;
+    }
+
+    .cien-scrapbook .color-dots span {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .cien-scrapbook .destination-paper {
+      background: #f5f1e7;
+      padding: 20px 16px;
+      border-radius: 5px;
+      box-shadow: 2px 4px 12px rgba(80,75,60,.08);
+      position: relative;
+    }
+
+    .cien-scrapbook .destination-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 10px;
+    }
+
+    .cien-scrapbook .destination {
+      font-family: Georgia, serif;
+      font-size: 14px;
+      color: #64765f;
+      padding: 9px 5px;
+      border-bottom: 1px dashed #c9c5b7;
+    }
+
+    .cien-scrapbook .photo-collage {
+      columns: 2;
+      column-gap: 14px;
+      margin-top: 20px;
+    }
+
+    .cien-scrapbook .memory-photo {
+      display: inline-block;
+      width: 100%;
+      background: #fffdf7;
+      padding: 8px 8px 22px;
+      margin: 0 0 17px;
+      break-inside: avoid;
+      box-shadow: 2px 4px 12px rgba(65,60,50,.13);
+      position: relative;
+    }
+
+    .cien-scrapbook .memory-photo:nth-child(3n) {
+      transform: rotate(2deg);
+    }
+
+    .cien-scrapbook .memory-photo:nth-child(3n + 1) {
+      transform: rotate(-2deg);
+    }
+
+    .cien-scrapbook .memory-photo:nth-child(3n + 2) {
+      transform: rotate(1deg);
+    }
+
+    .cien-scrapbook .memory-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .cien-scrapbook .memory-photo figcaption {
+      font-family: Georgia, serif;
+      font-size: 11px;
+      color: #777666;
+      text-align: center;
+      padding-top: 9px;
+    }
+
+    .cien-scrapbook .scrap-note {
+      text-align: center;
+      color: #8b897e;
+      font-size: 12px;
+      font-style: italic;
+      margin: 22px 0;
+    }
+
+    .cien-scrapbook .scrap-divider {
+      text-align: center;
+      color: #a9a1bc;
+      letter-spacing: 8px;
+      margin: 30px 0;
+    }
+
+    @media (max-width: 360px) {
+      .cien-scrapbook .favorite-grid {
+        gap: 10px;
+      }
+    }
+  </style>
+
+  <!-- INTRODUCTION -->
   <section class="section">
     <div class="section-heading">
       <div class="eyebrow">the person behind the page</div>
       <h2>A little about me</h2>
       <p>Not everything about me fits on one page, but here's a little place to start.</p>
     </div>
+
     <div class="about-grid">
       <figure class="polaroid">
         <img src="IMG_3417.jpeg" alt="Cien">
         <figcaption>that's me, for now ♡</figcaption>
       </figure>
+
       <div class="paper-card">
         <div class="eyebrow">hello, it's me</div>
         <h2 style="font-size:2.25rem">I'm Cienhel.</h2>
         <p>My name is <strong>Cienhel Alfonso Biñas</strong>, but you can call me <strong>Cien</strong> or <strong>CN</strong>. I'm curious, creative, introspective, and sometimes impatient. I love discovering things, making things, and finding little ways to express myself.</p>
         <p>I have so many goals and dreams waiting for me. I don't know exactly where every road will lead, but I want to keep learning, creating, and collecting moments along the way.</p>
+
         <div class="facts">
           <span class="tag">curious</span>
           <span class="tag purple">creative</span>
@@ -1238,10 +1424,257 @@ body {
           <span class="tag">impatient sometimes</span>
           <span class="tag purple">ambitious</span>
         </div>
+
         <p class="note hand">A work in progress, just like everyone else.</p>
       </div>
     </div>
   </section>
+
+  <div class="cien-scrapbook">
+
+    <!-- FAVORITE THINGS -->
+    <section class="section">
+      <div class="scrap-heading">
+        <div class="eyebrow">little things I love</div>
+        <h2>A little more about me ♡</h2>
+        <p>A collection of my favorite things.</p>
+      </div>
+
+      <div class="favorite-grid">
+
+        <div class="favorite-card">
+          <div class="scrap-tape"></div>
+          <img src="color.jpg" alt="My favorite colors">
+          <div class="scrap-label">Favorite colors</div>
+          <p>Sage green, lavender, purple, cream, and soft pastels.</p>
+          <div class="color-dots">
+            <span style="background:#A3B49A"></span>
+            <span style="background:#C9B9DF"></span>
+            <span style="background:#927DB5"></span>
+            <span style="background:#F0EBDD"></span>
+          </div>
+        </div>
+
+        <div class="favorite-card">
+          <div class="scrap-tape"></div>
+          <img src="panda.jpg" alt="Panda">
+          <div class="scrap-label">My animal</div>
+          <p>Panda ♡</p>
+        </div>
+
+        <div class="favorite-card">
+          <div class="scrap-tape"></div>
+          <img src="takoyaki.jpg" alt="Takoyaki">
+          <div class="scrap-label">Favorite food</div>
+          <p>Takoyaki!</p>
+        </div>
+
+        <div class="favorite-card">
+          <div class="scrap-tape"></div>
+          <img src="hyacinth.jpg" alt="Hyacinth flower">
+          <div class="scrap-label">Favorite flower</div>
+          <p>Hyacinth ♡</p>
+        </div>
+
+        <div class="favorite-card">
+          <div class="scrap-tape"></div>
+          <img src="autumn.jpg" alt="Autumn">
+          <div class="scrap-label">Favorite season</div>
+          <p>Autumn, with its cozy colors.</p>
+        </div>
+
+        <div class="favorite-card">
+          <div class="scrap-tape"></div>
+          <img src="mountain.jpg" alt="Mountain Dew">
+          <div class="scrap-label">Favorite drink</div>
+          <p>Mountain Dew!</p>
+        </div>
+
+        <div class="favorite-card">
+          <div class="scrap-tape"></div>
+          <img src="ice.jpg" alt="Ice cream">
+          <div class="scrap-label">Favorite dessert</div>
+          <p>Ice cream ♡</p>
+        </div>
+
+        <div class="favorite-card">
+          <div class="scrap-tape"></div>
+          <img src="gwansik.jpg" alt="Gwan-sik">
+          <div class="scrap-label">Favorite character</div>
+          <p>Gwan-sik from <em>When Life Gives You Tangerines</em>.</p>
+        </div>
+
+        <div class="favorite-card">
+          <div class="scrap-tape"></div>
+          <div style="font-size:38px;text-align:center;padding:25px 0 12px;">🎧</div>
+          <div class="scrap-label">My music taste</div>
+          <p>R&B, hip-hop, funk, and Afrobeats.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="scrap-divider">✿ ✧ ✿</div>
+
+    <!-- DREAM DESTINATIONS -->
+    <section class="section">
+      <div class="scrap-heading">
+        <div class="eyebrow">somewhere in my daydreams</div>
+        <h2>Places I hope to see someday</h2>
+        <p>A little travel wishlist tucked into my journal.</p>
+      </div>
+
+      <div class="destination-paper">
+        <div style="text-align:center;font-family:Georgia,serif;font-size:15px;margin-bottom:18px;color:#8b897e;">
+          ✧ my someday travel list ✧
+        </div>
+
+        <div class="destination-grid">
+          <div class="destination">🇰🇷 South Korea</div>
+          <div class="destination">🇨🇳 China</div>
+          <div class="destination">🇯🇵 Japan</div>
+          <div class="destination">🇨🇭 Switzerland</div>
+          <div class="destination">🇺🇸 Los Angeles</div>
+          <div class="destination">🇪🇸 Spain</div>
+          <div class="destination">🇮🇹 Italy</div>
+          <div class="destination">🇫🇷 France</div>
+        </div>
+
+        <p class="scrap-note">Maybe someday, I'll get to see them all. ♡</p>
+      </div>
+    </section>
+
+    <div class="scrap-divider">✿ ✧ ✿</div>
+
+    <!-- PERSONAL PHOTO COLLAGE -->
+    <section class="section">
+      <div class="scrap-heading">
+        <div class="eyebrow">random pieces of my camera roll</div>
+        <h2>Little Moments of Me</h2>
+        <p>Some silly faces, random pictures, and little memories worth keeping.</p>
+      </div>
+
+      <div class="photo-collage">
+
+        <figure class="memory-photo">
+          <img src="cn.jpeg" alt="Cien photo 1">
+          <figcaption>a little moment ♡</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn2.jpeg" alt="Cien photo 2">
+          <figcaption>just me being me</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn3.jpeg" alt="Cien photo 3">
+          <figcaption>camera roll memories</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn4.jpeg" alt="Cien photo 4">
+          <figcaption>another little memory</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn5.jpeg" alt="Cien photo 5">
+          <figcaption>caught on camera ♡</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn6.jpeg" alt="Cien photo 6">
+          <figcaption>little snapshots</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn7.jpeg" alt="Cien photo 7">
+          <figcaption>one for the journal</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn8.jpeg" alt="Cien photo 8">
+          <figcaption>just a random day</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn9.jpeg" alt="Cien photo 9">
+          <figcaption>me, again ♡</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn10.jpeg" alt="Cien photo 10">
+          <figcaption>a favorite moment</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn11.jpeg" alt="Cien photo 11">
+          <figcaption>little pieces of today</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn12.jpeg" alt="Cien photo 12">
+          <figcaption>photo diary</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn13.jpeg" alt="Cien photo 13">
+          <figcaption>another page of me</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn14.jpeg" alt="Cien photo 14">
+          <figcaption>random but precious</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn15.jpeg" alt="Cien photo 15">
+          <figcaption>little memories ♡</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn16.jpeg" alt="Cien photo 16">
+          <figcaption>just because</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn17.jpeg" alt="Cien photo 17">
+          <figcaption>another silly moment</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn18.jpeg" alt="Cien photo 18">
+          <figcaption>from my camera roll</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn19.jpeg" alt="Cien photo 19">
+          <figcaption>one more memory</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn20.jpeg" alt="Cien photo 20">
+          <figcaption>me being me ♡</figcaption>
+        </figure>
+
+        <figure class="memory-photo">
+          <img src="cn21.jpeg" alt="Cien photo 21">
+          <figcaption>until the next little moment</figcaption>
+        </figure>
+
+      </div>
+
+      <p class="scrap-note hand">
+        a little collection of moments, faces, and memories ♡
+      </p>
+    </section>
+
+    <div class="scrap-divider">✿ ✧ ✿</div>
+
+    <p class="scrap-note">
+      just a few little pieces of me, collected in one place ♡
+    </p>
+
+  </div>
 </div>
 
 <!-- MUSIC PAGE -->
