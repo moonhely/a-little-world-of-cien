@@ -863,6 +863,26 @@ body {
   transform: translateY(-4px);
   transition: 0.25s ease;
 }
+  .hobby-video {
+  width: 100%;
+  margin-top: 12px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.hobby-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.hobby-caption {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-top: 8px;
+  opacity: 0.75;
+}
 </style>
 </head>
 
@@ -1068,15 +1088,61 @@ body {
       <h2>My little hobbies</h2>
       <p>Different interests, different moods, all pieces of the same person.</p>
     </div>
+
     <div class="hobby-grid">
-      <div class="hobby"><div class="emoji">🎮</div><h3>Playing games</h3></div>
-      <div class="hobby"><div class="emoji">💿</div><h3>Collecting K-pop merch</h3></div>
-      <div class="hobby"><div class="emoji">🎀</div><h3>Cute things & stickers</h3></div>
-      <div class="hobby"><div class="emoji">✍️</div><h3>Writing stories</h3></div>
-      <div class="hobby"><div class="emoji">🧶</div><h3>Crocheting</h3></div>
-      <div class="hobby"><div class="emoji">💃</div><h3>Dancing</h3></div>
-      <div class="hobby"><div class="emoji">🎧</div><h3>Listening to music</h3></div>
-      <div class="hobby"><div class="emoji">📷</div><h3>Photography</h3></div>
+      <div class="hobby">
+        <div class="emoji">🎮</div>
+        <h3>Playing games</h3>
+      </div>
+
+      <div class="hobby">
+        <div class="emoji">💿</div>
+        <h3>Collecting K-pop merch</h3>
+      </div>
+
+      <div class="hobby">
+        <div class="emoji">🎀</div>
+        <h3>Cute things & stickers</h3>
+      </div>
+
+      <div class="hobby">
+        <div class="emoji">✍️</div>
+        <h3>Writing stories</h3>
+      </div>
+
+      <div class="hobby">
+        <div class="emoji">🧶</div>
+        <h3>Crocheting</h3>
+      </div>
+
+      <!-- DANCING HOBBY WITH VIDEO -->
+      <div class="hobby">
+        <div class="emoji">💃</div>
+        <h3>Dancing</h3>
+
+        <div class="hobby-video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/2x-IddfIJVg"
+            title="CHOOM - BABYMONSTER K-pop Dance Cover by LOONABY"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <p class="hobby-caption">
+          CHOOM – BABYMONSTER
+          <br>K-pop Dance Cover by LOONABY
+        </p>
+      </div>
+
+      <div class="hobby">
+        <div class="emoji">🎧</div>
+        <h3>Listening to music</h3>
+      </div>
+
+      <div class="hobby">
+        <div class="emoji">📷</div>
+        <h3>Photography</h3>
+      </div>
     </div>
   </section>
 </div>
