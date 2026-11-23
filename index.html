@@ -1198,20 +1198,38 @@ body {
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-heading">
-      <div class="eyebrow">welcome to my little corner</div>
-      <h2>A world made of little things</h2>
-      <p>Every interest, every memory, and every dream has a little place here. Choose a page and explore.</p>
+  
+<section class="section">
+  <div class="section-heading">
+    <div class="eyebrow">welcome to my little corner</div>
+    <h2>A world made of little things</h2>
+    <p>Every interest, every memory, and every dream has a little place here. Choose a page and explore.</p>
+  </div>
+
+  <div class="hobby-grid">
+    <div class="hobby" onclick="showPage('kpop')" style="cursor:pointer">
+      <div class="emoji">🎧</div>
+      <h3>Music</h3>
     </div>
-    <div class="hobby-grid">
-      <div class="hobby"><div class="emoji">🎧</div><h3>Music</h3></div>
-      <div class="hobby"><div class="emoji">🌷</div><h3>Favorite things</h3></div>
-      <div class="hobby"><div class="emoji">📷</div><h3>Memories</h3></div>
-      <div class="hobby"><div class="emoji">✨</div><h3>Dreams</h3></div>
+
+    <div class="hobby" onclick="showPage('collections')" style="cursor:pointer">
+      <div class="emoji">🌷</div>
+      <h3>Favorite things</h3>
     </div>
-  </section>
+
+    <div class="hobby" onclick="showPage('photos')" style="cursor:pointer">
+      <div class="emoji">📷</div>
+      <h3>Memories</h3>
+    </div>
+
+    <div class="hobby" onclick="showPage('dreams')" style="cursor:pointer">
+      <div class="emoji">✨</div>
+      <h3>Dreams</h3>
+    </div>
+  </div>
+</section>
 </div>
+
 
 <!-- ABOUT PAGE -->
 <div class="page" id="page-about">
